@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Settle — decide together, fast</title>
+  <meta name="description" content="Make a room, share the link, and let the group decide. Ranked choice, swipes or vetoes, with a wheel to break ties. No sign-up.">
+  <meta name="theme-color" content="#090b10">
+  <meta property="og:title" content="Settle — decide together, fast">
+  <meta property="og:description" content="Share a link, add options, vote. A wheel breaks ties.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/" aria-label="Settle home">
+      <img src="/logo.svg" width="34" height="34" alt="">
+      <span>Settle</span>
+    </a>
+    <p id="net" class="net" role="status" hidden>Reconnecting…</p>
+  </header>
+
+  <main id="app">
+    <p class="loading">Loading…</p>
+  </main>
+
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+  <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+  <noscript><p class="loading">Settle needs JavaScript to run.</p></noscript>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
