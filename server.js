@@ -186,9 +186,13 @@ app.get('/qr/:code', async (req, res) => {
 const PUBLIC_DIR = path.join(__dirname, 'public');
 app.use(express.static(PUBLIC_DIR, { maxAge: '10m', index: false }));
 
+// Link previews (LinkedIn, WhatsApp, Slack) need absolute URLs, so fill in this site's address.
+const INDEX_HTML = require('fs').readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf8');
+
 function sendIndex(req, res) {
+  const base = (process.env.RENDER_EXTERNAL_URL || `${req.protocol}://${req.get('host')}`).replace(/\/$/, '');
   res.setHeader('Cache-Control', 'no-cache');
-  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+  res.type('html').send(INDEX_HTML.split('__BASE_URL__').join(base));
 }
 app.get('/', sendIndex);
 app.get('/r/:code', sendIndex);
